@@ -7,7 +7,8 @@ VIVADO_ENV = ZYBO_JOBS=$(ZYBO_JOBS) ZYBO_BUILD_ROOT=$(ZYBO_BUILD_ROOT)
 .PHONY: sim sim-gpio sim-blink sim-vga \
         vivado-lab04 vivado-lab05 vivado-lab06 vivado-lab07 vivado-lab08 vivado-lab09 vivado-lab10 \
         vivado-bd-lab04 vivado-bd-lab05 vivado-bd-lab06 vivado-bd-lab07 vivado-bd-lab08 vivado-bd-lab09 vivado-bd-lab10 \
-        vivado-all vivado-bd-all vivado-clean legacy-ip check-reference-labs
+        vivado-all vivado-bd-all vivado-legacy-all vivado-legacy-bd-all vivado-clean legacy-ip check-reference-labs \
+        vivado-lab08-legacy-dma vivado-bd-lab08-legacy-dma vivado-lab09-in vivado-bd-lab09-in
 
 sim: sim-gpio sim-blink sim-vga
 
@@ -68,9 +69,27 @@ vivado-bd-lab09: legacy-ip
 vivado-bd-lab10:
 	ZYBO_BUILD_MODE=bd $(VIVADO_ENV) $(VIVADO) -mode batch -nojournal -nolog -source scripts/create_lab10.tcl
 
-vivado-all: vivado-lab04 vivado-lab05 vivado-lab06 vivado-lab07 vivado-lab08 vivado-lab09 vivado-lab10
+# Modern/current-IP aggregate. Lab09 is intentionally excluded because it uses old Digilent IP.
+vivado-all: vivado-lab04 vivado-lab05 vivado-lab06 vivado-lab07 vivado-lab08 vivado-lab10
 
-vivado-bd-all: vivado-bd-lab04 vivado-bd-lab05 vivado-bd-lab06 vivado-bd-lab07 vivado-bd-lab08 vivado-bd-lab09 vivado-bd-lab10
+vivado-bd-all: vivado-bd-lab04 vivado-bd-lab05 vivado-bd-lab06 vivado-bd-lab07 vivado-bd-lab08 vivado-bd-lab10
+
+vivado-legacy-all: vivado-lab08-legacy-dma vivado-lab09 vivado-lab09-in
+
+vivado-legacy-bd-all: vivado-bd-lab08-legacy-dma vivado-bd-lab09 vivado-bd-lab09-in
+
+vivado-lab08-legacy-dma: legacy-ip
+	$(VIVADO_ENV) $(VIVADO) -mode batch -nojournal -nolog -source scripts/create_lab08_legacy_dma.tcl
+
+vivado-bd-lab08-legacy-dma: legacy-ip
+	ZYBO_BUILD_MODE=bd $(VIVADO_ENV) $(VIVADO) -mode batch -nojournal -nolog -source scripts/create_lab08_legacy_dma.tcl
+
+vivado-lab09-in: legacy-ip
+	$(VIVADO_ENV) $(VIVADO) -mode batch -nojournal -nolog -source scripts/create_lab09_in.tcl
+
+vivado-bd-lab09-in: legacy-ip
+	ZYBO_BUILD_MODE=bd $(VIVADO_ENV) $(VIVADO) -mode batch -nojournal -nolog -source scripts/create_lab09_in.tcl
+
 
 legacy-ip:
 	bash scripts/bootstrap_legacy_ip.sh

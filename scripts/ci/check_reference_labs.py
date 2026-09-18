@@ -46,6 +46,20 @@ for lab, needles in expect.items():
         if needle not in text:
             errors.append(f"Lab {lab}: expected token {needle!r}")
 
+legacy_extra = {
+    "scripts/create_lab08_legacy_dma.tcl": ["834fd71ed0349b8be6594a75f63a5f0c1f6ba615", "Projects", "dma"],
+    "scripts/create_lab09_in.tcl": ["834fd71ed0349b8be6594a75f63a5f0c1f6ba615", "hdmi_in"],
+}
+for rel, needles in legacy_extra.items():
+    p = ROOT / rel
+    if not p.exists():
+        errors.append(f"missing {rel}")
+        continue
+    body = p.read_text(encoding="utf-8")
+    for needle in needles:
+        if needle not in body:
+            errors.append(f"{rel}: expected token {needle!r}")
+
 common = (ROOT / "scripts/common/zybo_common.tcl").read_text(encoding="utf-8")
 for token in ["xc7z010clg400-1", "MT41K128M16 JT-125", "PCW_MIO_16_IOTYPE", "PCW_MIO_53_SLEW", "validate_bd_design", "write_hw_platform"]:
     if token not in common:

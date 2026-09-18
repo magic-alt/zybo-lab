@@ -17,4 +17,4 @@ jobs:
         run: make check-reference-labs
       - name: Tcl completeness checks
         run: |
-          tclsh scripts/ci/check_tcl_syntax.tcl             scripts/common/zybo_common.tcl             scripts/create_lab04.tcl             scripts/create_lab05.tcl             scripts/create_lab06.tcl             scripts/create_lab07.tcl             scripts/create_lab08.tcl             scripts/create_lab09.tcl             scripts/create_lab10.tcl
+          tclsh scripts/ci/check_tcl_syntax.tcl             scripts/common/zybo_common.tcl             scripts/create_lab04.tcl             scripts/create_lab05.tcl             scripts/create_lab06.tcl             scripts/create_lab07.tcl             scripts/create_lab08.tcl             scripts/create_lab09.tcl             scripts/create_lab10.tcl             scripts/create_lab08_legacy_dma.tcl             scripts/create_lab09_in.tcl

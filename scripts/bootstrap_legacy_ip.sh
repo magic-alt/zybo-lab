@@ -20,7 +20,7 @@ fi
 mkdir -p "$(dirname "$DEST")"
 git clone --filter=blob:none --no-checkout "$REPO" "$DEST"
 git -C "$DEST" sparse-checkout init --cone
-git -C "$DEST" sparse-checkout set Projects/hdmi_out Projects/dma Resources
+git -C "$DEST" sparse-checkout set Projects/hdmi_out Projects/hdmi_in Projects/dma Resources
 git -C "$DEST" checkout --detach "$COMMIT"
 
 echo "Pinned Digilent/ZYBO legacy reference at $COMMIT"

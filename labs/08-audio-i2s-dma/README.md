@@ -101,3 +101,20 @@ Next milestone:
 SSM2603 RECDAT -> I2S RX -> async AXIS FIFO -> AXI DMA S2MM -> DDR
 DDR -> AXI DMA MM2S -> async AXIS FIFO -> I2S TX -> SSM2603 PBDAT
 ~~~
+
+## Full historical DMA-audio backend
+
+For the complete official Original-ZYBO SSM2603 + AXI DMA reference path:
+
+~~~bash
+make vivado-lab08-legacy-dma
+# or block-design validation only
+make vivado-bd-lab08-legacy-dma
+~~~
+
+This target rebuilds the pinned Digilent/ZYBO Projects/dma project. It is kept separate from the modern Stage-1 implementation because the official project contains historical custom audio IP and is tied to the older Vivado/SDK generation.
+
+The two backends therefore serve different purposes:
+
+- vivado-lab08: current-IP, small, maintainable codec/I2S bring-up baseline;
+- vivado-lab08-legacy-dma: full historical DMA audio reference for architecture comparison and porting.

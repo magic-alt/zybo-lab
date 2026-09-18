@@ -78,3 +78,18 @@ make vivado-bd-lab09
 Pinned Digilent/ZYBO commit: 834fd71ed0349b8be6594a75f63a5f0c1f6ba615.
 
 This is a legacy backend. The script warns when run outside Vivado 2015/2016/2017 because modern Vivado may require IP upgrade/porting. The goal is to preserve a known Original-ZYBO baseline, not to imply universal forward compatibility.
+
+## HDMI Sink legacy backend
+
+The pinned upstream checkout also contains the official Original-ZYBO HDMI input design:
+
+~~~bash
+make vivado-lab09-in
+# or block-design validation only
+make vivado-bd-lab09-in
+~~~
+
+Thus Lab 09 preserves both historical directions of the single dual-role connector:
+
+- vivado-lab09 — HDMI Source / hdmi_out;
+- vivado-lab09-in — HDMI Sink / hdmi_in.

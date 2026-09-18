@@ -108,3 +108,19 @@ This makes the historical implementation stable while keeping the tool-version b
 5. Generated project/artifact directories are disposable.
 6. Static checks run without proprietary tools.
 7. Real Vivado validation has an explicit self-hosted CI path.
+
+## Modern and legacy aggregate targets
+
+A single Vivado version is not a truthful common denominator for current AXI IP and the 2015-era Digilent HDMI/audio custom IP. Aggregate targets are therefore separated:
+
+~~~bash
+# Current/native IP path: Labs 04,05,06,07,08,10
+make vivado-all
+make vivado-bd-all
+
+# Pinned historical full-board paths
+make vivado-legacy-all
+make vivado-legacy-bd-all
+~~~
+
+Legacy aggregate includes the full official DMA-audio backend plus Original-ZYBO HDMI Source and Sink. This separation makes a CI failure attributable to either a current-design regression or a historical tool/IP compatibility boundary.
