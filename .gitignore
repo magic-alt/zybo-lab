@@ -1,0 +1,43 @@
+# Vivado
+.Xil/
+*.jou
+*.log
+*.str
+*.xpr
+*.runs/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.srcs/
+*.bit
+*.ltx
+
+# Vitis / SDK
+Debug/
+Release/
+.metadata/
+.settings/
+*.elf
+*.bif
+*.bin
+*.xsa
+*.hdf
+
+# PetaLinux
+build/
+images/linux/
+components/
+.project
+.petalinux/
+
+# Python
+__pycache__/
+.venv/
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
