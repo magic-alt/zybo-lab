@@ -43,3 +43,13 @@ Cortex-A9 ISR
 ## Debug
 
 ILA 同时观察 Button、ip2intc_irpt 和 AXI Clear。
+
+
+## Reproducible Vivado build
+
+~~~bash
+make vivado-lab05
+make vivado-bd-lab05
+~~~
+
+The Tcl creates PS7 + AXI GPIO + xlconcat + IRQ_F2P and fixes the GPIO window at 0x4120_0000. Use the generated XSA/xparameters for the exact interrupt ID.

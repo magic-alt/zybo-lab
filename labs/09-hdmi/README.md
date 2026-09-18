@@ -63,3 +63,18 @@ Sink：
 - 能检测 Resolution；
 - 抓一帧到 DDR；
 - 软件修改部分 Pixel 后再显示。
+
+
+## Reproducible build backend
+
+The full Original-ZYBO HDMI Source depends on historical Digilent TMDS/DVI and dynamic-clock IP. Instead of substituting Zybo-Z7 IP, this lab pins the official Original-ZYBO reference tree.
+
+~~~bash
+make legacy-ip
+make vivado-lab09
+make vivado-bd-lab09
+~~~
+
+Pinned Digilent/ZYBO commit: 834fd71ed0349b8be6594a75f63a5f0c1f6ba615.
+
+This is a legacy backend. The script warns when run outside Vivado 2015/2016/2017 because modern Vivado may require IP upgrade/porting. The goal is to preserve a known Original-ZYBO baseline, not to imply universal forward compatibility.

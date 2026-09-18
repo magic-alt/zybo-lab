@@ -38,3 +38,13 @@ Checklist：
 ## Extension
 
 把 Lab 07/08 的数据流通过 DMA 收到 DDR，再通过 UDP 发到 PC。
+
+
+## Reproducible Vivado build
+
+~~~bash
+make vivado-lab10
+make vivado-bd-lab10
+~~~
+
+The Tcl keeps GEM0 in the PS on MIO 16..27 and MDIO/MDC on MIO 52..53, and adds AXI GPIO status LEDs at 0x4120_0000. The fallback PS7 preset includes the Original-ZYBO GEM I/O voltage/pull/slew settings.

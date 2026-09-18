@@ -127,6 +127,43 @@ zybo-lab/
 
 完整资料地图见 docs/resources.md。
 
+## Reproducible Vivado reference builds
+
+Labs 04–10 now have Make/Tcl entry points. A normal target performs Block Design generation, validation, synthesis, implementation and bitstream generation:
+
+~~~bash
+make vivado-lab04
+make vivado-lab05
+make vivado-lab06
+make vivado-lab07
+make vivado-lab08
+make vivado-lab09
+make vivado-lab10
+~~~
+
+For fast CI-style validation on a machine with Vivado installed:
+
+~~~bash
+make vivado-bd-lab04
+make vivado-bd-all
+~~~
+
+The build root defaults to build/; override it with ZYBO_BUILD_ROOT. Parallelism is controlled with ZYBO_JOBS.
+
+| Lab | Reproducible hardware backend | Fixed control address |
+|---|---|---:|
+| 04 | PS7 + AXI GPIO LEDs | 0x4120_0000 |
+| 05 | PS7 + AXI GPIO + GIC/IRQ_F2P | 0x4120_0000 |
+| 06 | PS7 + HP0 + AXI DMA + AXIS FIFO | 0x4040_0000 |
+| 07 | PS7 + AXI XADC, JA VAUX6/7/14/15 | 0x43C3_0000 |
+| 08 | PS7 + AXI IIC + 12.288 MHz + I2S playback baseline | 0x4160_0000 |
+| 09 | pinned official Original-ZYBO HDMI-out legacy backend | upstream map |
+| 10 | PS GEM0/MDIO + AXI GPIO status LEDs | 0x4120_0000 |
+
+Open-source CI runs RTL simulations, static reference-lab checks and Tcl completeness checks. A separate manual workflow targets a self-hosted runner labeled vivado for real Vivado Block Design validation.
+
+See docs/07-reproducible-builds.md.
+
 ## License
 
 MIT。外部参考工程、手册和第三方代码仍遵循各自许可证；本仓库不直接复制第三方大型教程或工程。

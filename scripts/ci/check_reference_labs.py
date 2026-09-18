@@ -37,7 +37,7 @@ expect = {
     "07": ["xadc_wiz", "VAUXP14", "0x43C30000"],
     "08": ["axi_iic", "12.288", "i2s_tone_gen"],
     "09": ["834fd71ed0349b8be6594a75f63a5f0c1f6ba615", "hdmi_out"],
-    "10": ["PCW_ENET0_PERIPHERAL_ENABLE", "axi_gpio"],
+    "10": ["PCW_ENET0_PERIPHERAL_ENABLE", "PCW_ENET0_GRP_MDIO_IO", "axi_gpio"],
 }
 
 for lab, needles in expect.items():
@@ -47,7 +47,7 @@ for lab, needles in expect.items():
             errors.append(f"Lab {lab}: expected token {needle!r}")
 
 common = (ROOT / "scripts/common/zybo_common.tcl").read_text(encoding="utf-8")
-for token in ["xc7z010clg400-1", "MT41K128M16 JT-125", "validate_bd_design", "write_hw_platform"]:
+for token in ["xc7z010clg400-1", "MT41K128M16 JT-125", "PCW_MIO_16_IOTYPE", "PCW_MIO_53_SLEW", "validate_bd_design", "write_hw_platform"]:
     if token not in common:
         errors.append(f"common Tcl missing {token!r}")
 

@@ -9,6 +9,7 @@ set_property -dict [list \
     CONFIG.PCW_ENET0_PERIPHERAL_ENABLE {1} \
     CONFIG.PCW_ENET0_ENET0_IO {MIO 16 .. 27} \
     CONFIG.PCW_ENET0_GRP_MDIO_ENABLE {1} \
+    CONFIG.PCW_ENET0_GRP_MDIO_IO {MIO 52 .. 53} \
 ] [get_bd_cells $ps]
 
 zybo::create_ip axi_gpio axi_gpio_0

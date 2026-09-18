@@ -18,6 +18,12 @@ file copy -force $source_project $work
 
 puts "ZYBO-LAB: rebuilding pinned Original ZYBO HDMI-out reference"
 puts "ZYBO-LAB: source commit 834fd71ed0349b8be6594a75f63a5f0c1f6ba615"
+set vivado_ver [version -short]
+puts "ZYBO-LAB: Vivado version $vivado_ver"
+if {![regexp {^(2015|2016|2017)\.} $vivado_ver]} {
+    puts "WARNING: Lab09 is a pinned legacy backend exported by old Vivado."
+    puts "WARNING: Modern Vivado may require IP upgrade/porting; use this target as the reproducible legacy baseline."
+}
 
 source [file join $work proj create_project.tcl]
 

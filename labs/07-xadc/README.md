@@ -47,3 +47,13 @@ XADC 输入不是“任意 3.3 V ADC”。上板前先阅读 Zynq-7000 XADC 文�
 ## Original Reference
 
 https://github.com/Digilent/ZYBO/tree/master/Projects/XADC
+
+
+## Reproducible Vivado build
+
+~~~bash
+make vivado-lab07
+make vivado-bd-lab07
+~~~
+
+The Tcl builds PS7 + AXI XADC, fixes the register window at 0x43C3_0000, and enables Original-ZYBO JA channels VAUX6/7/14/15 plus on-chip temperature/VCC sensors.

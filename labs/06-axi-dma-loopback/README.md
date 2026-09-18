@@ -48,3 +48,22 @@ S_AXI_HP0 <---- AXI DMA MM Side
 ## 必做实验
 
 故意删掉 Cache Maintenance，观察错误是否出现。理解 Cache Bug 为什么可能具有随机性，比只背 API 更重要。
+
+
+## Reproducible Vivado build
+
+~~~bash
+make vivado-lab06
+make vivado-bd-lab06
+~~~
+
+Generated topology:
+
+~~~text
+PS7 M_AXI_GP0 -> AXI DMA control @ 0x4040_0000
+PS7 S_AXI_HP0 <- DMA MM2S / S2MM
+DMA MM2S -> AXIS FIFO -> DMA S2MM
+DMA IRQs -> xlconcat -> IRQ_F2P
+~~~
+
+The hardware exposes both DMA interrupts even though the first software exercise uses polling.
