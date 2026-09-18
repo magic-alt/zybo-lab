@@ -1,0 +1,26 @@
+name: vivado-self-hosted
+
+on:
+  workflow_dispatch:
+    inputs:
+      lab:
+        description: "Lab number to validate in Vivado"
+        required: true
+        default: "04"
+        type: choice
+        options:
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+          - "09"
+          - "10"
+
+jobs:
+  block-design:
+    runs-on: [self-hosted, linux, vivado]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build/validate selected block design
+        run: make vivado-bd-lab${{ inputs.lab }}
