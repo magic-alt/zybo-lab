@@ -175,3 +175,46 @@ Zybo Z7 的 DMA/XADC/HDMI 教程可以用来学习较新 Vivado 操作，但必�
 | D | Zybo Z7 项目 | 只借鉴工具/架构思想，不直接用 Pin/BSP |
 
 本仓库正文优先把 A/B 级资料重构成可执行 Lab；C/D 级资料放在延伸阅读或 Migration Notes。
+
+
+## J — Digilent 早期官方 Embedded Linux Hands-on Tutorial
+
+### Embedded Linux Hands-on Tutorial for the ZYBO
+
+可检索镜像：
+https://www.farnell.com/datasheets/1904568.pdf
+
+Digilent 文档编号 594-008，2014/2015 年 Original ZYBO 教程。它的教学价值在于把以下内容放在同一条链路里：
+
+- Hardware Customization；
+- Boot Image / FSBL；
+- U-Boot；
+- Linux Kernel；
+- Device Tree；
+- Root Filesystem；
+- Driver；
+- User Application。
+
+GUI、Kernel Tree 和 Boot Artifact 都属于历史版本，但“硬件描述如何一路传到 Linux 软件栈”的结构仍然非常值得学习。
+
+对应本仓库：
+- Lab 11：Boot/FSBL/BOOT.BIN；
+- Lab 13：PetaLinux/Linux/UIO；
+- docs/06-embedded-linux-hands-on-map.md：把旧教程映射为现代重建方法。
+
+### Japanese Original-ZYBO Linux Tutorial Series
+
+代表页：
+https://fpga.blog.jp/archives/13854090.html
+
+该系列逐步复现 Digilent Embedded Linux Hands-on Tutorial，包含 IP Upgrade、Kernel、DTB、RAMDisk、Linux Boot 等。价值在于记录了旧教程中实际会遇到的版本和 Bootargs 问题。
+
+## K — 早期纯 FPGA / Vivado 入门
+
+### FPGA Programming: First Steps with the ZYBO Development Board
+
+https://johanngoetz.blogspot.com/2014/04/first-steps-with-zybo-development-board.html
+
+2014 年 Original ZYBO + Vivado 2013.4。内容从 xc7z010clg400-1 Part 选择、125 MHz Clock、Verilog Counter、XDC 到 Hardware Manager Programming。
+
+它和 Lab 00/01 非常适合对照：一边看早期 GUI 流程，一边用本仓库的 Tcl/Testbench/CI 方式重做。
